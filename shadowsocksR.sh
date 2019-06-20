@@ -200,9 +200,6 @@ pre_install(){
         apt-get -y update
         apt-get -y install python python-dev python-setuptools openssl libssl-dev curl wget unzip gcc automake autoconf make libtool
     fi
-    cd ${cur_dir}
-}
-
 }
 pre_install1(){
     if check_sys packageManager yum || check_sys packageManager apt; then
