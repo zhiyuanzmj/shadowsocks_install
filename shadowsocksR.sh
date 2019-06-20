@@ -193,6 +193,28 @@ pre_install(){
         echo -e "[${red}Error${plain}] Your OS is not supported. please change OS to CentOS/Debian/Ubuntu and try again."
         exit 1
     fi
+    # Install necessary dependencies
+    if check_sys packageManager yum; then
+        yum install -y python python-devel python-setuptools openssl openssl-devel curl wget unzip gcc automake autoconf make libtool
+    elif check_sys packageManager apt; then
+        apt-get -y update
+        apt-get -y install python python-dev python-setuptools openssl libssl-dev curl wget unzip gcc automake autoconf make libtool
+    fi
+    cd ${cur_dir}
+}
+
+}
+pre_install1(){
+    if check_sys packageManager yum || check_sys packageManager apt; then
+        # Not support CentOS 5
+        if centosversion 5; then
+            echo -e "$[{red}Error${plain}] Not supported CentOS 5, please change to CentOS 6+/Debian 7+/Ubuntu 12+ and try again."
+            exit 1
+        fi
+    else
+        echo -e "[${red}Error${plain}] Your OS is not supported. please change OS to CentOS/Debian/Ubuntu and try again."
+        exit 1
+    fi
     # Set ShadowsocksR config password
     echo "Please enter password for ShadowsocksR:"
     read -p "(Default password: teddysun.com):" shadowsockspwd
@@ -384,15 +406,15 @@ config_shadowsocks(){
 {
     "server":"0.0.0.0",
     "server_ipv6":"[::]",
-    "server_port":${shadowsocksport},
+    "server_port":7912,
     "local_address":"127.0.0.1",
     "local_port":1080,
-    "password":"${shadowsockspwd}",
+    "password":"zhiyuanzmj@123",
     "timeout":120,
-    "method":"${shadowsockscipher}",
-    "protocol":"${shadowsockprotocol}",
+    "method":"chacha20",
+    "protocol":"auth_sha1_v4",
     "protocol_param":"",
-    "obfs":"${shadowsockobfs}",
+    "obfs":"tls1.2_ticket_auth",
     "obfs_param":"",
     "redirect":"",
     "dns_ipv6":false,
