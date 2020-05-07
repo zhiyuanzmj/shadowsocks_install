@@ -408,7 +408,7 @@ config_shadowsocks(){
     "server_port":7912,
     "local_address":"127.0.0.1",
     "local_port":1080,
-    "password":"jinbangNB0209",
+    "password":"zhiyuanzmj@123",
     "timeout":120,
     "method":"chacha20",
     "protocol":"auth_sha1_v4",
@@ -458,7 +458,7 @@ install(){
         echo -e "Congratulations, ShadowsocksR server install completed!"
         echo -e "Your Server IP        : \033[41;37m $(get_ip) \033[0m"
         echo -e "Your Server Port      : \033[41;37m 7912 \033[0m"
-        echo -e "Your Password         : \033[41;37m jinbangNB0209 \033[0m"
+        echo -e "Your Password         : \033[41;37m zhiyuanzmj@123 \033[0m"
         echo -e "Your Protocol         : \033[41;37m auth_sha1_v4 \033[0m"
         echo -e "Your obfs             : \033[41;37m tls1.2_ticket_auth \033[0m"
         echo -e "Your Encryption Method: \033[41;37m chacha20 \033[0m"
